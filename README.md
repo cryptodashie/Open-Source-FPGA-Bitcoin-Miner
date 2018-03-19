@@ -1,3 +1,5 @@
+Fork of the open-source FPGA miner with project files for DE0-Nano.
+
 Open-Source FPGA Bitcoin Miner
 ==============================================
 
