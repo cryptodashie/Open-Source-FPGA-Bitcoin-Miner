@@ -22,7 +22,7 @@
 
 `timescale 1ns/1ps
 
-module fpgaminer_top (osc_clk);
+module fpgaminer_top (osc_clk,LEDS_out);
 
 	// The LOOP_LOG2 parameter determines how unrolled the SHA-256
 	// calculations are. For example, a setting of 0 will completely
@@ -49,14 +49,15 @@ module fpgaminer_top (osc_clk);
 	localparam [31:0] GOLDEN_NONCE_OFFSET = (32'd1 << (7 - LOOP_LOG2)) + 32'd1;
 
 	input osc_clk;
-
+	output [7:0] LEDS_out;
 
 	//// 
 	reg [255:0] state = 0;
 	reg [511:0] data = 0;
 	reg [31:0] nonce = 32'h00000000;
 
-
+	assign LEDS_out = nonce[31:24];
+	
 	//// PLL
 	wire hash_clk;
 	`ifndef SIM
